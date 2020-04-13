@@ -6,6 +6,7 @@ import CountryCard from "../components/CountryCard";
 import SearchBar from "../components/SearchBar";
 
 const Home = () => {
+  // eslint-disable-next-line
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
 

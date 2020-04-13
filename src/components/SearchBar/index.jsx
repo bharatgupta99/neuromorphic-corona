@@ -10,6 +10,7 @@ const baseUrl = "https://api.covid19api.com/";
 
 const SearchBar = ({ handleCountriesChange }) => {
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line
   const [error, setError] = useState("");
   const [countries, setCountries] = useState([]);
 
