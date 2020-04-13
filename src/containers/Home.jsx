@@ -23,8 +23,31 @@ const Home = () => {
       })
     );
     const responses = await Promise.all(apis);
-    setData(responses);
+    combineData(responses);
     setLoading(false);
+  };
+
+  const combineData = (responses) => {
+    const dataSet = [];
+    responses.forEach((states) => {
+      const stateData = {
+        Country: states[0].Country,
+        CountryCode: states[0].CountryCode,
+        Confirmed: 0,
+        Deaths: 0,
+        Recovered: 0,
+        Active: 0,
+      };
+      states.forEach((state) => {
+        stateData.Confirmed += state.Confirmed;
+        stateData.Deaths += state.Deaths;
+        stateData.Recovered += state.Recovered;
+        stateData.Active += state.Active;
+      });
+      dataSet.push(stateData);
+    });
+    console.log("ds=>", dataSet);
+    setData(dataSet);
   };
 
   return (
@@ -32,17 +55,17 @@ const Home = () => {
       <SearchBar handleCountriesChange={handleCountriesChange} />
       <div className="cardsContainer">
         {data.map((item, index) => {
-          if (item[0]) {
+          if (item) {
             return (
               <CountryCard
                 key={index}
-                name={item[0].Country}
-                code={item[0].CountryCode.toLowerCase()}
+                name={item.Country}
+                code={item.CountryCode.toLowerCase()}
                 stats={{
-                  Confirmed: item[0].Confirmed,
-                  Deaths: item[0].Deaths,
-                  Recovered: item[0].Recovered,
-                  Active: item[0].Active,
+                  Confirmed: item.Confirmed,
+                  Deaths: item.Deaths,
+                  Recovered: item.Recovered,
+                  Active: item.Active,
                 }}
               />
             );
