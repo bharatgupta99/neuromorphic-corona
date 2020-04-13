@@ -30,23 +30,24 @@ const Home = () => {
   const combineData = (responses) => {
     const dataSet = [];
     responses.forEach((states) => {
-      const stateData = {
-        Country: states[0].Country,
-        CountryCode: states[0].CountryCode,
-        Confirmed: 0,
-        Deaths: 0,
-        Recovered: 0,
-        Active: 0,
-      };
-      states.forEach((state) => {
-        stateData.Confirmed += state.Confirmed;
-        stateData.Deaths += state.Deaths;
-        stateData.Recovered += state.Recovered;
-        stateData.Active += state.Active;
-      });
-      dataSet.push(stateData);
+      if (states[0]) {
+        const stateData = {
+          Country: states[0].Country,
+          CountryCode: states[0].CountryCode,
+          Confirmed: 0,
+          Deaths: 0,
+          Recovered: 0,
+          Active: 0,
+        };
+        states.forEach((state) => {
+          stateData.Confirmed += state.Confirmed;
+          stateData.Deaths += state.Deaths;
+          stateData.Recovered += state.Recovered;
+          stateData.Active += state.Active;
+        });
+        dataSet.push(stateData);
+      }
     });
-    console.log("ds=>", dataSet);
     setData(dataSet);
   };
 
