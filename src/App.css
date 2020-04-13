@@ -1,0 +1,30 @@
+:root {
+  --nue-color: #dde1e7;
+  --neu-offset-one: #ffffff80;
+  --neu-offset-two: #00000080;
+  --primary-text: #606060;
+  --input-text: #787878;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #dde1e7;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+select__menu-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE and Edge */
+body {
+  -ms-overflow-style: none;
+}
